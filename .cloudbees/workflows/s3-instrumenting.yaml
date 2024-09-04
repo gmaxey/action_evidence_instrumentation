@@ -2,9 +2,7 @@ apiVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
 name: S3 instrumenting
 on:
-  push:
-    branches:
-      - "**"
+  workflow_dispatch:
 jobs:
   upload-to-s3:
     steps:
@@ -20,10 +18,10 @@ jobs:
           aws-secret-access-key: ${{ secrets.aws_secret_access_key }}
           aws-session-token: ${{ secrets.aws_session_token }}
       - id: workspace-to-s3-upload
-        name: upload to s3 
+        name: upload to s3
         uses: cloudbees-io/s3-upload-object@v1
         with:
-            file-path: ${{ cloudbees.workspace }}/hello.txt
-            bucketname: cluster.ecloud-demo.com
-            s3-path: hello.txt
-            action-type: upload
+          file-path: ${{ cloudbees.workspace }}/hello.txt
+          bucketname: cluster.ecloud-demo.com
+          s3-path: hello.txt
+          action-type: upload
