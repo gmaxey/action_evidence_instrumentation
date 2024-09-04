@@ -22,6 +22,6 @@ jobs:
         name: upload to s3
         id: workspace-to-s3-upload
         with:
-          file-path: ${{ cloudbees.workspace }}/hello.txt
+          file-path: "${{ cloudbees.workspace }}/hello.txt"
           s3-path: hello.txt
           bucket-name: cluster.ecloud-demo.com
