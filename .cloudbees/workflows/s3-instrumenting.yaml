@@ -11,7 +11,10 @@ jobs:
         shell: sh
         run: |
           mkdir ${{ cloudbees.workspace }}/hello
-          echo "hello world" > ${{ cloudbees.workspace }}/hello/hello.txt
+          for i in file1.txt file2.txt file3.txt
+          do
+            echo "hello world" > ${{ cloudbees.workspace }}/hello/$i
+          done
           ls ${{ cloudbees.workspace }}
       - uses: cloudbees-io/configure-aws-credentials@v1
         with:
