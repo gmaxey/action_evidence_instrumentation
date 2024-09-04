@@ -10,7 +10,8 @@ jobs:
         name: Create File
         shell: sh
         run: |
-          echo "hello world" > ${{ cloudbees.workspace }}/hello.txt
+          mkdir ${{ cloudbees.workspace }}/hello
+          echo "hello world" > ${{ cloudbees.workspace }}/hello/hello.txt
           ls ${{ cloudbees.workspace }}
       - uses: cloudbees-io/configure-aws-credentials@v1
         with:
@@ -22,6 +23,6 @@ jobs:
         name: upload to s3
         id: workspace-to-s3-upload
         with:
-          file-path: "${{ cloudbees.workspace }}/hello.txt"
-          s3-path: hello.txt
+          file-path: ${{ cloudbees.workspace }}/hello
+          s3-path: hello
           bucket-name: cluster.ecloud-demo.com
