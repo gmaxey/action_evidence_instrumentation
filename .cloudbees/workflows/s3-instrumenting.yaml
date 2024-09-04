@@ -23,5 +23,4 @@ jobs:
         with:
           file-path: ${{ cloudbees.workspace }}/hello.txt
           s3-path: hello.txt
-          action-type: upload
           bucket-name: cluster.ecloud-demo.com
