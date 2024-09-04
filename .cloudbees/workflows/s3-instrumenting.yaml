@@ -10,7 +10,7 @@ jobs:
         name: Create File
         shell: sh
         run: |
-          echo "hello world" > hello.txt
+          echo "hello world" > ${{ cloudbees.workspace }}/hello.txt
           pwd
           ls
       - uses: cloudbees-io/configure-aws-credentials@v1
