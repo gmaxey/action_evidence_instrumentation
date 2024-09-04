@@ -11,6 +11,8 @@ jobs:
         shell: sh
         run: |
           echo "hello world" > hello.txt
+          pwd
+          ls
       - uses: cloudbees-io/configure-aws-credentials@v1
         with:
           aws-region: us-east-1
